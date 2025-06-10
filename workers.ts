@@ -30,5 +30,4 @@ export default {
     // Không match: trả 404
     return new Response("404 Not Found", { status: 404 });
   },
-  scheduled
 };
