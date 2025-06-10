@@ -16,5 +16,9 @@ id = "5508bc57d64b40b3ab6ce6c43b58c598"
 binding = "KV_INDEX_HOTMAIL"
 id = "c6fb54413b2e4106b7fa27ba61e3d44c"
 
+[[kv_namespaces]]
+binding = "KV_CACHE"
+id = "0e5888b12fbe4e55851b5dfa1922b064"
+
 routes = ["gem.id.vn/*"]
      
