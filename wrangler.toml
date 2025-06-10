@@ -1,6 +1,8 @@
-name = "api-hotmail"
-main = "workers.ts"
+name = "outlook-tool"
+main = "workers.ts"               # hoặc "src/workers.ts" nếu trong thư mục src
 compatibility_date = "2025-06-10"
+type = "javascript"               # nếu dùng JS; chọn "webpack" hoặc "rust" nếu bạn dùng khác
+
 
 [[kv_namespaces]]
 binding = "KV_USER"
@@ -13,3 +15,5 @@ id = "5508bc57d64b40b3ab6ce6c43b58c598"
 [[kv_namespaces]]
 binding = "KV_INDEX_HOTMAIL"
 id = "c6fb54413b2e4106b7fa27ba61e3d44c"
+
+route = "gem.id.vn/*"         
