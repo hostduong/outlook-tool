@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8">
+    <title>Quản lý email - API Hotmail</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Quản lý danh sách email trong hệ thống API Hotmail.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">API Hotmail</span>
+        <a href="profile.html" class="btn btn-outline-light">Thông tin tài khoản</a>
+        <button id="logout-btn" class="btn btn-outline-danger ms-2">Đăng xuất</button>
+      </div>
+    </nav>
+    <div class="container py-4">
+      <div class="row justify-content-center">
+        <div class="col-md-10">
+          <div class="card shadow">
+            <div class="card-body">
+              <h2 class="card-title mb-4">Danh sách email</h2>
+              <form id="add-email-form" class="row g-2 mb-4">
+                <div class="col-md-4">
+                  <input type="email" class="form-control" id="newEmail" placeholder="Email mới" required>
+                </div>
+                <div class="col-md-4">
+                  <input type="password" class="form-control" id="newEmailPass" placeholder="Mật khẩu email" required>
+                </div>
+                <div class="col-auto">
+                  <button class="btn btn-success" type="submit">Thêm email</button>
+                </div>
+              </form>
+              <table class="table table-striped" id="emails-table">
+                <thead>
+                  <tr>
+                    <th>Email</th>
+                    <th>Trạng thái</th>
+                    <th>Token</th>
+                    <th>Thao tác</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Danh sách email sẽ render ở đây -->
+                </tbody>
+              </table>
+              <div id="emails-status" class="mt-2"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
