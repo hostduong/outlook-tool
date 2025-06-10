@@ -1,0 +1,11 @@
+[[kv_namespaces]]
+binding = "KV_USER"
+id = "55655242f00943ba85261f6f2e34b5ff"
+
+[[kv_namespaces]]
+binding = "KV_HOTMAIL"
+id = "5508bc57d64b40b3ab6ce6c43b58c598"
+
+[[kv_namespaces]]
+binding = "KV_INDEX_HOTMAIL"
+id = "c6fb54413b2e4106b7fa27ba61e3d44c"
