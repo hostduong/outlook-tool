@@ -1,4 +1,8 @@
-// main.js
+// Đặt đầu file:
+const API_BASE = "https://gem.id.vn"; // Sửa thành domain backend API của bạn
+
+// Nếu test local có thể thêm tự động detect như sau:
+// const API_BASE = location.hostname.includes('localhost') ? 'http://localhost:8787' : 'https://api.gem.id.vn';
 
 // Helper: check login and load profile on profile.html/emails.html
 document.addEventListener('DOMContentLoaded', function () {
@@ -38,7 +42,7 @@ async function login(e) {
   e.preventDefault();
   const email = document.getElementById('typeEmailX').value.trim();
   const pass = document.getElementById('typePasswordX').value;
-  const res = await fetch('/login', {
+  const res = await fetch(`${API_BASE}/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, pass })
@@ -57,7 +61,7 @@ async function register(e) {
   e.preventDefault();
   const email = document.getElementById('regEmail').value.trim();
   const pass = document.getElementById('regPassword').value;
-  const res = await fetch('/register', {
+  const res = await fetch(`${API_BASE}/register`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, pass })
@@ -75,7 +79,7 @@ async function register(e) {
 async function loadProfile() {
   const api_key = getApiKey();
   if (!api_key) return logout();
-  const res = await fetch('/profile', {
+  const res = await fetch(`${API_BASE}/profile`, {
     headers: { 'Authorization': api_key }
   });
   const data = await res.json();
@@ -91,7 +95,7 @@ async function changePassword(e) {
   e.preventDefault();
   const api_key = getApiKey();
   const newPassword = document.getElementById('newPassword').value;
-  const res = await fetch('/change-pass', {
+  const res = await fetch(`${API_BASE}/change-pass`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Authorization': api_key },
     body: JSON.stringify({ newPassword })
@@ -103,7 +107,7 @@ async function changePassword(e) {
 // Tạo mới API Key
 async function regenApiKey() {
   const api_key = getApiKey();
-  const res = await fetch('/regen-key', {
+  const res = await fetch(`${API_BASE}/regen-key`, {
     method: 'POST',
     headers: { 'Authorization': api_key }
   });
@@ -117,7 +121,7 @@ async function regenApiKey() {
 // Tạo mới Base32
 async function regenBase32() {
   const api_key = getApiKey();
-  const res = await fetch('/regen-base32', {
+  const res = await fetch(`${API_BASE}/regen-base32`, {
     method: 'POST',
     headers: { 'Authorization': api_key }
   });
@@ -129,7 +133,7 @@ async function regenBase32() {
 async function loadEmails() {
   const api_key = getApiKey();
   if (!api_key) return logout();
-  const res = await fetch('/email/list', {
+  const res = await fetch(`${API_BASE}/email/list`, {
     headers: { 'Authorization': api_key }
   });
   const data = await res.json();
@@ -159,7 +163,7 @@ async function addEmail(e) {
   const api_key = getApiKey();
   const email = document.getElementById('newEmail').value.trim();
   const pass = document.getElementById('newEmailPass').value;
-  const res = await fetch('/email/add', {
+  const res = await fetch(`${API_BASE}/email/add`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Authorization': api_key },
     body: JSON.stringify({ email, pass })
@@ -176,7 +180,7 @@ async function addEmail(e) {
 // Các thao tác cho từng email (dùng window.* cho HTML inline handler)
 window.refreshToken = async function(email) {
   const api_key = getApiKey();
-  const res = await fetch('/email/refresh', {
+  const res = await fetch(`${API_BASE}/email/refresh`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Authorization': api_key },
     body: JSON.stringify({ email })
@@ -185,7 +189,7 @@ window.refreshToken = async function(email) {
 };
 window.getCode = async function(email) {
   const api_key = getApiKey();
-  const res = await fetch('/email/get-code', {
+  const res = await fetch(`${API_BASE}/email/get-code`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Authorization': api_key },
     body: JSON.stringify({ email })
@@ -196,7 +200,7 @@ window.getCode = async function(email) {
 window.deleteEmail = async function(email) {
   if (!confirm('Bạn chắc chắn muốn xóa email này?')) return;
   const api_key = getApiKey();
-  const res = await fetch('/email/delete', {
+  const res = await fetch(`${API_BASE}/email/delete`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Authorization': api_key },
     body: JSON.stringify({ email })
